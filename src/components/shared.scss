@@ -1,4 +1,4 @@
-$palette: (
+$palettes: (
         grey: (
                 base: #e0e1e4,
                 light: #9e9fa1,
@@ -30,3 +30,6 @@ $palette: (
   @return null;
 
 }
+
+$header-font: 'Montserrat', sans-serif;
+$font: 'Raleway', sans-serif;
