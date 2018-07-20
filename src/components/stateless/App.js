@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import 'normalize.css';
-import './App.scss';
+import React, { Component } from "react";
+import "normalize.css";
+import "./App.css";
 
 class App extends Component {
-  render() {
+  render () {
     return (
       <div className="App">
         <header className="App-header">
           {/*<img className="App-logo" alt="logo" />*/}
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">MUSEO Talk</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <section className="cta">
+          <h2>Engage with other visitors via chat and comments while browsing your favorite art pieces.</h2>
+        </section>
       </div>
     );
   }
