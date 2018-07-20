@@ -1,20 +1,42 @@
 @import "../shared.scss";
 
+html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+html,
+body {
+  background-color: color(grey, medium);
+  font-family: $font;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $header-font;
+}
+
 .App {
-  text-align: center;
+  text-align: left;
+  color: #fff;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+header {
+  h1 {
+    margin: 0;
+    font-size: 24px;
+    padding: 40px 0 0 40px;
+  }
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
+.cta {
+  padding: 0 40px 0 40px;
+  h2 {
+    margin: 50px 0 0 0;
+  }
 }
