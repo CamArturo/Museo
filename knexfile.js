@@ -4,9 +4,12 @@ module.exports = {
 
   development: {
     client: "pg",
-    connection: "postgres://localhost/mueso_talk",
+    connection: "postgres://localhost/museo_talk",
     migrations: {
       directory: './db/migrations'
+    },
+    seeds: {
+      directory: "./db/seeds/dev"
     },
     useNullAsDefault: true
   },
