@@ -1,4 +1,8 @@
-const {usersData} = require("./data/data.js");
+const usersData = [
+  {name: 'Gene Belcher', email: 'queenoffarts@gmail.com'},
+  {name: 'Louise Belcher', email: 'mcsheisty@gmail.com'},
+  {name: 'Tina Belcher', email: 'zombiebutts@gmail.com'}
+]
 
 exports.seed = function (knex, Promise) {
   return knex("users").del()
@@ -9,14 +13,18 @@ exports.seed = function (knex, Promise) {
           email: user.email
         }, "id")
           .then(id => {
-            const unresolvedPromises = user.comments.map(comment => {
-              return knex("posts").select().where("comment", comment)
-                .update({author_id: parseInt(id)});
-            });
+            if (user.comments) {
+              const unresolvedCommentsPromises = user.comments.map(comment => {
+                return knex("posts").select().where("comment", comment)
+                  .update({author_id: parseInt(id)});
+              });
+              return Promise.all(unresolvedCommentsPromises);
+            }
 
-            return Promise.all(unresolvedPromises);
-          });
+          })
+          .catch(error => console.log(`OOPS!: ${error}`));
       });
       return Promise.all(unresolvedUserPromises);
-    });
+    })
+    .catch(error => console.log(`OOPS!: ${error}`));
 };
