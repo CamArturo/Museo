@@ -6,7 +6,7 @@ module.exports = {
     client: "pg",
     connection: "postgres://localhost/museo_talk",
     migrations: {
-      directory: './db/migrations'
+      directory: "./db/migrations"
     },
     seeds: {
       directory: "./db/seeds/dev"
@@ -28,6 +28,16 @@ module.exports = {
     migrations: {
       tableName: "knex_migrations"
     }
+  }, test: {
+    client: "pg",
+    connection: "postgres://localhost/museo_talk",
+    migrations: {
+      directory: "./db/migrations"
+    },
+    seeds: {
+      directory: "./db/seeds/test"
+    },
+    useNullAsDefault: true
   }
 
 };
