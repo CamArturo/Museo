@@ -15,9 +15,9 @@ module.exports = {
   },
 
   production: {
-    client: "postgresql",
+    client: "pg",
     connection: {
-      database: "my_db",
+      database: "museo_talk",
       user: "username",
       password: "password"
     },
