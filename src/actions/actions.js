@@ -13,3 +13,8 @@ export const collectionsHasErrored = (error) => ({
   error
 });
 
+export const postComment = (comment) => ({
+  type: 'POST_COMMENT',
+  comment
+});
+
