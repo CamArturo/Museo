@@ -1,14 +1,12 @@
-const initialState = {
-  comments: []
-}
+const initialState = [];
 
-const commentsReducer = (state = intialState, action) => {
+const commentsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'POST_COMMENT':
-      return {...state, comments: [...comments, action.comment]};
+    case "POST_COMMENT":
+      return [...state, action.comment]
     default:
       return state;
   }
-}
+};
 
 export default commentsReducer;
