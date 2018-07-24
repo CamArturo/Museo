@@ -9,7 +9,7 @@ const database = require("knex")(configuration);
 // const knexfile = require('./knexfile.js');
 // const knex = require('knex')(knexfile);
 
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 4000);
 
 app.use(express.static("public"));
 app.use(bodyParser.json());
