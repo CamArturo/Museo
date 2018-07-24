@@ -1,13 +1,23 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import { getCollections } from '../../actions/actions';
+import { fetchCollections } from '../../api/api';
 import "normalize.css";
 import "./App.css";
 
-class App extends Component {
+export class App extends Component {
+
+  async componentDidMount() {
+    const collections = await fetchCollections();
+
+    this.props.getCollections(collections)
+  }
+
   render () {
     return (
       <div className="App">
         <header className="App-header">
-          {/*<img className="App-logo" alt="logo" />*/}
           <h1 className="App-title">MUSEO Talk</h1>
         </header>
         <section className="cta">
@@ -18,4 +28,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToDispatch = (dispatch) => ({
+  getCollections: collections => dispatch(getCollections(collections))
+})
+
+export default connect(null, mapStateToDispatch)(App);

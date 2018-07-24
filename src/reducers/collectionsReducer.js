@@ -1,10 +1,10 @@
-initialState = {
+const initialState = {
   collections: [],
   collectionsIsLoading: false,
   collectionsHasErrored: ''
 }
 
-export default const collectionsReducer = (state = initialState, action) => {
+const collectionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'GET_COLLECTIONS':
       return {...state, collections: action.collections};
@@ -16,3 +16,5 @@ export default const collectionsReducer = (state = initialState, action) => {
       return state;
   }
 }
+
+export default collectionsReducer;

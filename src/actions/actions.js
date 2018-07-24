@@ -1,5 +1,5 @@
 export const getCollections = (collections) => ({
-  type: 'GET_COLLECTION',
+  type: 'GET_COLLECTIONS',
   collections
 });
 
