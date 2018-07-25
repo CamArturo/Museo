@@ -5,7 +5,7 @@ html {
 
 html,
 body {
-  background-color: #86828c;
+  background-color: color(grey, medium);
   font-family: "Raleway", sans-serif; }
 
 h1,
@@ -29,3 +29,5 @@ header h1 {
   padding: 0 40px 0 40px; }
   .cta h2 {
     margin: 50px 0 0 0; }
+
+/*# sourceMappingURL=App.css.map */
