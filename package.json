@@ -12,7 +12,9 @@
     "pg": "^7.4.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
     "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
     "socket.io": "^2.1.1"
   },
   "scripts": {
@@ -28,5 +30,6 @@
   },
   "devDependencies": {
     "eslint": "^5.1.0"
-  }
+  },
+  "proxy": "http://localhost:4000/"
 }
