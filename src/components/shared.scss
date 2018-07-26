@@ -1,35 +1,8 @@
-$palettes: (
-        grey: (
-                base: #e0e1e4,
-                light: #9e9fa1,
-                medium: #86828c,
-                dark: #3e3640
-        ),
-        orange: (
-                base: #e8563c
-        )
-);
-
-@function color($color,$tone) {
-
-  @warn map-get($palettes, $color);
-
-  @if map-has-key($palettes, $color) {
-    $color: map-get($palettes, $color);
-
-    @if map-has-key($color, $tone) {
-      $tone: map-get($color, $tone);
-      @return $tone;
-    }
-
-    @warn "unknown tone `#{$tone}` in color";
-    @return null;
-  }
-
-  @warn "unknown color `#{$color}` in palette";
-  @return null;
-
-}
+$grey-base: #e0e1e4;
+$grey-light: #9e9fa1;
+$grey-medium: #86828c;
+$grey-dark: #3e3640;
+$orange-base: #orange;
 
 $header-font: 'Montserrat', sans-serif;
 $font: 'Raleway', sans-serif;

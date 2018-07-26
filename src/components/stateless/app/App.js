@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import io from 'socket.io-client';
-import { getCollections, postComment, getComments } from "../../actions/actions";
-import { fetchCollections, sendCommentToDB, fetchComments } from "../../api/api";
-import Comments from "./Comments/Comments";
-import "normalize.css";
+import { getCollections, postComment, getComments } from "../../../actions/actions";
+import { fetchCollections, sendCommentToDB, fetchComments } from "../../../api/api";
+import Comments from "../Comments/Comments";
+import "../../../../node_modules/normalize.css/normalize.css";
 import "./App.css";
 
 export class App extends Component {
