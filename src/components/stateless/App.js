@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import io from 'socket.io-client';
-import { getCollections, postComment } from "../../actions/actions";
-import { fetchCollections, 
-          //sendCommentToDB } 
-          from "../../api/api";
+import { getCollections, postComment, getComments } from "../../actions/actions";
+import { fetchCollections, sendCommentToDB, fetchComments } from "../../api/api";
 import Comments from "./Comments/Comments";
 import "normalize.css";
 import "./App.css";
@@ -29,19 +27,21 @@ export class App extends Component {
         username: this.state.username,
         comment: this.state.comment
       });
-      this.setState({ comment: '' });
     }
   }
 
   async componentDidMount () {
     const collections = await fetchCollections();
+    const comments = await fetchComments();
 
     this.props.getCollections(collections);
+    this.props.getComments(comments)
   }
 
   handleChange () {
     this.sendComment(); //to socket
-    // sendCommentToDB(this.state.comment)
+    sendCommentToDB(this.state.comment);
+    this.setState({ comment: '' });
   }
 
   render () {
@@ -75,6 +75,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getCollections: collections => dispatch(getCollections(collections)),
+  getComments: comments => dispatch(getComments(comments)),
   postComment: comment => dispatch(postComment(comment))
 });
 

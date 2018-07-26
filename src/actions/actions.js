@@ -13,6 +13,11 @@ export const collectionsHasErrored = (error) => ({
   error
 });
 
+export const getComments =(comments) => ({
+  type: 'GET_COMMENTS',
+  comments
+});
+
 export const postComment = (comment) => ({
   type: 'POST_COMMENT',
   comment
