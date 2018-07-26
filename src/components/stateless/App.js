@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import io from 'socket.io-client';
 import { getCollections, postComment } from "../../actions/actions";
-import { fetchCollections, sendCommentToDB } from "../../api/api";
+import { fetchCollections, 
+          //sendCommentToDB } 
+          from "../../api/api";
 import Comments from "./Comments/Comments";
 import "normalize.css";
 import "./App.css";
@@ -38,8 +40,8 @@ export class App extends Component {
   }
 
   handleChange () {
-    this.sendComment();
-    sendCommentToDB
+    this.sendComment(); //to socket
+    // sendCommentToDB(this.state.comment)
   }
 
   render () {
