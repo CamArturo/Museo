@@ -1,4 +1,4 @@
-@import "../shared.scss";
+@import "../../shared.scss";
 
 html {
   margin: 0;
@@ -8,7 +8,7 @@ html {
 
 html,
 body {
-  background-color: color(grey, medium);
+  background-color: $grey-medium;
   font-family: $font;
 }
 

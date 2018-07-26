@@ -1,15 +1,13 @@
 const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
+const socket = require("socket.io");
 
 const environment = process.env.NODE_ENV || "development";
 const configuration = require("./knexfile")[environment];
 const database = require("knex")(configuration);
 
-// const knexfile = require('./knexfile.js');
-// const knex = require('knex')(knexfile);
-
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 4000);
 
 app.use(express.static("public"));
 app.use(bodyParser.json());
@@ -68,6 +66,16 @@ app.get("/api/v1/art/:id", (request, response) => {
     });
 });
 
+app.get("/api/v1/comments", (request, response) => {
+  database("posts").select()
+    .then((comments) => {
+      response.status(200).json(comments);
+    })
+    .catch((error) => {
+      response.status(500).json({error});
+    });
+});
+
 app.post("/api/v1/comments", (request, response) => {
   const {artwork_id} = request.body;
 
@@ -80,7 +88,6 @@ app.post("/api/v1/comments", (request, response) => {
   }
 
   database("posts").insert(request.body)
-
     .then(item => {
       response.status(201).json({
         message: `Comment was added to art with id: ${artwork_id}`
@@ -97,7 +104,7 @@ app.delete("/api/v1/comments/:id", (request, response) => {
   database("posts").where("id", id).select()
     .then(post => {
       if (!post.length) {
-        response.status(404).json({error: `Could not find post ${id}`})
+        response.status(404).json({error: `Could not find post ${id}`});
       } else {
         database("posts").where("id", id).del()
           .then(() =>
@@ -142,7 +149,7 @@ app.delete("/api/v1/users/:id", (request, response) => {
   database("users").where("id", id).select()
     .then(user => {
       if (!user.length) {
-        response.status(404).json({error: `Could not find user with id: ${id}`})
+        response.status(404).json({error: `Could not find user with id: ${id}`});
       } else {
         database("users").where("id", id).del()
           .then(() =>
@@ -158,8 +165,20 @@ app.delete("/api/v1/users/:id", (request, response) => {
     });
 });
 
-
-
-app.listen(app.get("port"), () => {
+server = app.listen(app.get("port"), () => {
   console.log(`Running on ${app.get("port")}.`);
+});
+
+io = socket(server);
+
+io.on("connection", (socket) => {
+  console.log("user connected", socket.id);
+
+  socket.on("SEND_COMMENT", (data) => {
+    io.emit("RECEIVE_MESSAGES", data);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("user has disconnected", socket.id);
+  });
 });
