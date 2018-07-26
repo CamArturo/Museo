@@ -5,7 +5,7 @@ import { getComments, postComment } from "../../../actions/actions";
 import { fetchComments, sendCommentToDB } from "../../../api/api";
 import "normalize.css";
 
-export class Comments extends Component {
+export class ArtWork extends Component {
   constructor (props) {
     super(props);
 
@@ -69,4 +69,4 @@ const mapDispatchToProps = (dispatch) => ({
   postComment: comment => dispatch(postComment(comment))
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(Comments);
+export default connect(mapStateToProps,mapDispatchToProps)(ArtWork);

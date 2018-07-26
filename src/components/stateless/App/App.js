@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getCollections } from "../../../actions/actions";
 import { fetchCollections } from "../../../api/api";
-import Comments from "../Comments/Comments";
+import Comments from "../../stateful/ArtWork/ArtWork";
 import "normalize.css";
 import "./App.css";
 

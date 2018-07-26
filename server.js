@@ -1,7 +1,7 @@
 const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
-const socket = require('socket.io');
+const socket = require("socket.io");
 
 const environment = process.env.NODE_ENV || "development";
 const configuration = require("./knexfile")[environment];
@@ -104,7 +104,7 @@ app.delete("/api/v1/comments/:id", (request, response) => {
   database("posts").where("id", id).select()
     .then(post => {
       if (!post.length) {
-        response.status(404).json({error: `Could not find post ${id}`})
+        response.status(404).json({error: `Could not find post ${id}`});
       } else {
         database("posts").where("id", id).del()
           .then(() =>
@@ -149,7 +149,7 @@ app.delete("/api/v1/users/:id", (request, response) => {
   database("users").where("id", id).select()
     .then(user => {
       if (!user.length) {
-        response.status(404).json({error: `Could not find user with id: ${id}`})
+        response.status(404).json({error: `Could not find user with id: ${id}`});
       } else {
         database("users").where("id", id).del()
           .then(() =>
@@ -165,22 +165,20 @@ app.delete("/api/v1/users/:id", (request, response) => {
     });
 });
 
-
-
 server = app.listen(app.get("port"), () => {
   console.log(`Running on ${app.get("port")}.`);
 });
 
 io = socket(server);
 
-io.on('connection', (socket) => {
-  console.log('user connected', socket.id)
+io.on("connection", (socket) => {
+  console.log("user connected", socket.id);
 
-  socket.on('SEND_COMMENT', (data) => {
-    io.emit('RECEIVE_MESSAGES', data);
+  socket.on("SEND_COMMENT", (data) => {
+    io.emit("RECEIVE_MESSAGES", data);
   });
 
-  socket.on('disconnect', () => {
-    console.log('user has disconnected', socket.id);
+  socket.on("disconnect", () => {
+    console.log("user has disconnected", socket.id);
   });
 });
