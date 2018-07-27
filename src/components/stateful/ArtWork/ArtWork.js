@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import io from "socket.io-client";
 import { connect } from "react-redux";
+import { Route } from 'react-router';
 import { getComments, postComment } from "../../../actions/actions";
 import { fetchComments, sendCommentToDB } from "../../../api/api";
 import "normalize.css";
