@@ -10,11 +10,13 @@ const Collections = ({ collections }) => {
   const keys = Object.keys(collections);
 
   const navLinks = keys.map(key => {
+    const endpoint = key.replace(/\s/g, '_');
+    console.log(endpoint  )
     return (
       <li>
-        <img src={arrow} alt="" /><NavLink className="nav" to={`/${key}`}>{key}</NavLink>
+        <img src={arrow} alt="" /><NavLink className="nav" to={`/${endpoint}`}>{key}</NavLink>
         <Route 
-          path={`/${key}`} 
+          path={`/${endpoint}`} 
           component={CollectionPage}
         />
       </li>

@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 export class CollectionPage extends Component {
 
   displayCollection = () => {
-    const category = this.props.match.params.category;
+    const endpoint = this.props.match.params.category;
+    const category = endpoint.replace(/_/g, ' ');
 
     const artworks = this.props.collections[category].map(art => {
       const {id, artist, title, year, image_link, page_link} = art;
@@ -26,8 +27,6 @@ export class CollectionPage extends Component {
   };
 
   render () {
-    console.log(this.props)
-    console.log(this.props.collections);
     return (
       <div>
         {

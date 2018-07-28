@@ -1,9 +1,3 @@
-// const initialState = {
-//   collections: {},
-//   collectionsIsLoading: false,
-//   collectionsHasErrored: ""
-// };
-
 const initialState = {};
 
 const collectionsReducer = (state = initialState, action) => {
