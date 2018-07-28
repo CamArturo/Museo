@@ -11,7 +11,6 @@ const Collections = ({ collections }) => {
 
   const navLinks = keys.map(key => {
     const endpoint = key.replace(/\s/g, '_');
-    console.log(endpoint  )
     return (
       <li>
         <img src={arrow} alt="" /><NavLink className="nav" to={`/${endpoint}`}>{key}</NavLink>
