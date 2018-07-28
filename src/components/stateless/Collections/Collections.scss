@@ -1,0 +1,28 @@
+@import "../../shared.scss";
+
+.collection-container {
+  ul {
+    margin-top: 50px;
+    li {
+      list-style-type: none;
+      line-height: 1.5rem;
+      img {
+        width: 1rem;
+        margin: 0 1rem 0 0;
+        vertical-align: text-top;
+      }
+      a {
+        color: #fff;
+        text-decoration: none;
+        text-transform: capitalize;
+        cursor: pointer;
+        font-size: 1.3rem;
+        line-height: 1.6;
+        &:hover,
+        &:active {
+          color: $grey-dark;
+        }
+      }
+    }
+  }
+}

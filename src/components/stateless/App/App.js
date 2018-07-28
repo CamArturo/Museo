@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getCollections } from "../../../actions/actions";
 import { fetchCollections } from "../../../api/api";
-import Comments from "../../stateful/ArtWork/ArtWork";
+import Collections from "../Collections/Collections";
 import "normalize.css";
 import "./App.css";
 
@@ -32,13 +32,14 @@ export class App extends Component {
             </button>
           </form>
         </section>
+        <section className="art-museum">
+          <img src={require("../../../assets/denver-art-museum.jpg")} alt="Denver Art Museum" />
+        </section>
         <section className="search-collections">
           <h2>Search Collections.</h2>
           <input type="text" placeholder="Search for an art piece" name="search-collections" />
         </section>
-        <section className="art-museum">
-          <img src={require("../../../assets/denver-art-museum.jpg")} alt="Denver Art Museum" />
-        </section>
+        <Collections/>
         <section className="info-box">
           <img src={require("../../../assets/icon-speech-bubble-64.png")} alt="Talk Icon" />
           <p>Museo’s social app gives your museum visit a social platform to connect with other people, through comments
