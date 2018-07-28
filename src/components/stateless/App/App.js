@@ -9,9 +9,6 @@ import "normalize.css";
 import "./App.css";
 
 export class App extends Component {
-  constructor () {
-    super()
-  }
 
   async componentDidMount () {
     const collections = await fetchCollections();
