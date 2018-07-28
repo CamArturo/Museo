@@ -61,11 +61,11 @@ export class ArtWork extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   comments: state.comments
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   getComments: comments => dispatch(getComments(comments)),
   postComment: comment => dispatch(postComment(comment))
 });
