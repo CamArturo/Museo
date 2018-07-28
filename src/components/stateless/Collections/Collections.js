@@ -6,17 +6,16 @@ import CollectionPage from "../CollectionPage/CollectionPage";
 import "normalize.css";
 import "./Collections.css";
 
-const Collections = (props) => {
-  const keys = Object.keys(props.collections);
+const Collections = ({ collections }) => {
+  const keys = Object.keys(collections);
 
   const navLinks = keys.map(key => {
-    const artCollection = props.collections[key];
     return (
       <li>
         <img src={arrow} alt="" /><NavLink className="nav" to={`/${key}`}>{key}</NavLink>
         <Route 
-          exact path={`/${key}`} 
-          render={(artCollection) => <CollectionPage artCollection={artCollection} />}
+          path={`/${key}`} 
+          component={CollectionPage}
         />
       </li>
     );
