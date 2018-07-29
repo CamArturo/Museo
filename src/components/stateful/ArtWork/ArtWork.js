@@ -5,6 +5,8 @@ import { Route } from 'react-router';
 import { getComments, postComment } from "../../../actions/actions";
 import { fetchComments, sendCommentToDB } from "../../../api/api";
 import "normalize.css";
+import "./Artwork.css";
+import { withRouter } from "react-router-dom";
 
 export class ArtWork extends Component {
   constructor (props) {
@@ -31,7 +33,6 @@ export class ArtWork extends Component {
 
   async componentDidMount () {
     const comments = await fetchComments();
-
     // goes into store
     this.props.getComments(comments);
   }
@@ -42,10 +43,13 @@ export class ArtWork extends Component {
     this.setState({comment: ""});
   }
 
-  render () {
+  displayArtwork = () => {
     const allComments = this.props.comments.map((comment, index) => <li key={`key${index}`}>{comment.comment}</li>);
+
+ 
     return (
       <div>
+        <img src={this.props.artwork.image_link} alt={this.props.artwork.title} />
         <textarea id="comment-box" name="comment-box"
                   rows="3" cols="33" maxLength="200"
                   wrap="hard" value={this.state.comment}
@@ -57,6 +61,18 @@ export class ArtWork extends Component {
           {allComments}
         </ul>
       </div>
+    )
+  };
+
+  render () {
+
+    return (
+      <section className="artwork-page-container">
+        {
+          // Object.keys(this.props.artwork).length > 0 ?
+          this.displayArtwork()
+        }
+      </section>
     );
   }
 }
@@ -70,4 +86,4 @@ export const mapDispatchToProps = (dispatch) => ({
   postComment: comment => dispatch(postComment(comment))
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(ArtWork);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(ArtWork));

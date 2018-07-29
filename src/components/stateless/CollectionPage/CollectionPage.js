@@ -46,7 +46,7 @@ export class CollectionPage extends Component {
       <div>
         {
           Object.keys(this.props.collections).length > 0 ?
-          this.displayCollection() : console.log("no collection")
+          this.displayCollection() : console.log("no collection available")
         }
       </div>
     );

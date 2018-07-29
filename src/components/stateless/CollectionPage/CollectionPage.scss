@@ -20,11 +20,6 @@
     padding: 0;
     background-color: #fff;
     .artwork-item {
-      &:hover,
-      &:active,
-      &:focus {
-        opacity: .7;
-      }
       .artwork-top {
         position: relative;
         font-family: $font;
@@ -58,6 +53,7 @@
           .artwork-artist-tag {
             border-bottom: 2px solid #fff;
             margin: 0 0 .5rem 1rem;
+            text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
           }
           .artwork-title {
             font-size: 1.5rem;
