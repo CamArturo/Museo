@@ -13,7 +13,8 @@ const Collections = ({ collections }) => {
     const endpoint = key.replace(/\s/g, '_');
     return (
       <li>
-        <img src={arrow} alt="" /><NavLink className="nav" to={`/${endpoint}`}>{key}</NavLink>
+        <img src={arrow} alt="" />
+        <NavLink className="nav" to={`/${endpoint}`}>{key}</NavLink>
         <Route 
           path={`/${endpoint}`} 
           component={CollectionPage}

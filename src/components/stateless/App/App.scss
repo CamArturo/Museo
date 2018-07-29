@@ -1,5 +1,57 @@
 @import "../../shared.scss";
 
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+html,
+body {
+  background-color: $grey-medium;
+  font-family: $font;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $header-font;
+}
+
+input[type=text],
+input[type=password] {
+  width: 100%;
+  padding: 12px 0 12px 60px;
+  margin: 8px 0;
+  display: inline-block;
+  background-color: transparent;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  font-size: 12px;
+  color: #fff;
+  outline: none;
+}
+
+::placeholder {
+  color: #fff;
+}
+
 .App {
   text-align: left;
   color: #fff;
