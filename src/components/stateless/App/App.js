@@ -1,18 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { NavLink, Route, withRouter, Switch, Redirect } from "react-router-dom";
+import { NavLink, Route, withRouter} from "react-router-dom";
 import { getCollections } from "../../../actions/actions";
 import { fetchCollections } from "../../../api/api";
-import Collections from "../Collections/Collections";
 import CollectionPage from "../CollectionPage/CollectionPage"
+import Home from "../Home/Home";
 import "normalize.css";
 import "./App.css";
-import Home from "../Home/Home";
 
 export class App extends Component {
-  constructor () {
-    super()
-  }
 
   async componentDidMount () {
     const collections = await fetchCollections();
@@ -29,7 +25,7 @@ export class App extends Component {
           </NavLink>
         </header>
         <Route exact path="/" component={Home}/>
-        <Route exact path="/Asian" component={CollectionPage}/>
+        <Route path="/:category" component={CollectionPage}/>
       </div>
     );
   }

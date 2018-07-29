@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Collections from "../Collections/Collections";
-import { NavLink, Route, withRouter, Switch, Redirect } from "react-router-dom";
 import "normalize.css";
 // import "./Home.css";
 
