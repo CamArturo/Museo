@@ -21,8 +21,10 @@ export class CollectionPage extends Component {
               <p className="artwork-artist">{artist}</p>
               <p className="artwork-title">{title}</p>
               <p className="artwork-year">{year}</p>
+              <button className="chat-btn">
+                <Link to={`/${endpoint}/${id}`}>Chat about this work!  &gt;</Link>
+              </button>
             </section>
-            <Link to={`/${endpoint}/${id}`}>Chat about this work!</Link>
           </section>
         </li>
       );

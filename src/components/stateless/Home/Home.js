@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Collections from "../Collections/Collections";
 import "normalize.css";
-// import "./Home.css";
-
 
 export class Home extends Component {
   render () {
