@@ -1,0 +1,82 @@
+@import "../../shared.scss";
+
+.collection-page-container {
+  h2 {
+    width: 80%;
+    padding: 0 0 0 30px;
+    margin: 0 0 1rem 0;
+    text-transform: capitalize;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+  }
+  h2 + p {
+    padding: 0 0 0 30px;
+    margin: 0 0 1rem 0;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #fff;
+    .artwork-item {
+      &:hover,
+      &:active,
+      &:focus {
+        opacity: .7;
+      }
+      .artwork-top {
+        position: relative;
+        font-family: $font;
+        text-align: left;
+        font-weight: bold;
+        font-variant: small-caps;
+        font-size: 1.2rem;
+        line-height: 1.5;
+        .art-museum-link {
+          position: absolute;
+          color: #fff;
+          text-decoration: none;
+          margin: 1rem 0 0 40px;
+          font-style: italic;
+          font-size: 1.1rem;
+        }
+        img {
+          width: 100%;
+          z-index: 1;
+        }
+        .artwork-info {
+          position: absolute;
+          bottom: 2rem;
+          width: 100%;
+          margin: 0;
+          .artwork-artist {
+            margin: .5rem 0 0 1rem;
+            font-size: 1.2rem;
+            font-variant: normal;
+          }
+          .artwork-artist-tag {
+            border-bottom: 2px solid #fff;
+            margin: 0 0 .5rem 1rem;
+          }
+          .artwork-title {
+            font-size: 1.5rem;
+            font-family: 'Open Sans', sans-serif;
+            font-variant: initial;
+            text-transform: capitalize;
+            width: 80%;
+          }
+          p {
+            margin: 0 0 0 1rem;
+            word-wrap: break-word;
+            width: calc(100% - 2rem);
+            text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+          }
+        }
+      }
+      //.artwork-item-bottom {
+      //  background-color: $grey-medium;
+      //  z-index: 2;
+      //}
+    }
+  }
+}
