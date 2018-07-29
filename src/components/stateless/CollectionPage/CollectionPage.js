@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import "./CollectionPage.css";
 
@@ -11,7 +12,7 @@ export class CollectionPage extends Component {
     const artworks = this.props.collections[category].map(art => {
       const {id, artist, title, year, image_link, page_link} = art;
       return (
-        <li className="artwork-item" id={id}>
+        <li className="artwork-item" key={id}>
           <section className="artwork-top">
             <a className="art-museum-link" href={page_link}>Back to Museum Page</a>
             <img src={image_link} alt={`${title}`} />
@@ -21,10 +22,8 @@ export class CollectionPage extends Component {
               <p className="artwork-title">{title}</p>
               <p className="artwork-year">{year}</p>
             </section>
+            <Link to={`/${endpoint}/${id}`}>Chat about this work!</Link>
           </section>
-          {/*<section className="artwork-item-bottom">*/}
-            {/*<a href={page_link}>Back to Museum Page</a>*/}
-          {/*</section>*/}
         </li>
       );
     });
@@ -56,4 +55,4 @@ export const mapStateToProps = (state) => ({
   collections: state.collections
 });
 
-export default connect(mapStateToProps)(CollectionPage);
+export default withRouter(connect(mapStateToProps)(CollectionPage));
