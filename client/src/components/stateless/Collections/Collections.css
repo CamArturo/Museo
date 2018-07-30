@@ -1,0 +1,20 @@
+.collection-container ul {
+  margin-top: 50px; }
+  .collection-container ul li {
+    list-style-type: none;
+    line-height: 1.5rem; }
+    .collection-container ul li img {
+      width: 1rem;
+      margin: 0 1rem 0 0;
+      vertical-align: text-top; }
+    .collection-container ul li a {
+      color: #fff;
+      text-decoration: none;
+      text-transform: capitalize;
+      cursor: pointer;
+      font-size: 1.3rem;
+      line-height: 1.6; }
+      .collection-container ul li a:hover, .collection-container ul li a:active {
+        color: #3e3640; }
+
+/*# sourceMappingURL=Collections.css.map */

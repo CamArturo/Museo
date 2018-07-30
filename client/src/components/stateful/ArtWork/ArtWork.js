@@ -16,8 +16,9 @@ export class ArtWork extends Component {
       messages: []
     };
 
-    this.socket = io(window.location.hostname);
-
+    this.socket = io("localhost:4000");
+    // this.socket = io(window.location.hostname || "localhost:4000");
+    
     this.socket.on("RECEIVE_MESSAGES", (data) => {
       this.setState({messages: [...this.state.messages, data]})
     });
