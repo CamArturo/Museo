@@ -15,13 +15,14 @@ export class ArtWork extends Component {
 
     this.state = {
       username: "",
-      comments: ""
+      comment: "",
+      messages: []
     };
 
     this.socket = io("localhost:4000");
 
     this.socket.on("RECEIVE_MESSAGES", (data) => {
-      this.props.postComment(data);
+      this.setState({ messages: [data, ...this.state.messages]})
     });
 
     this.sendComment = (event) => {
@@ -33,9 +34,9 @@ export class ArtWork extends Component {
   }
 
   async componentDidMount () {
-    const comments = await fetchComments();
-    // goes into store
-    this.props.getComments(comments);
+    const messages = await fetchComments();
+
+    this.setState({ messages });
   }
 
   handleChange () {
@@ -45,8 +46,7 @@ export class ArtWork extends Component {
   }
 
   displayArtwork = () => {
-    console.log(this.props.comments)
-    const filteredComments = this.props.comments.filter((comment) => {
+    const filteredComments = this.state.messages.filter((comment) => {
       return comment.artwork_id === this.props.artwork.id
     });
     const allComments = filteredComments.map((comment, index) => <li key={`key${index}`}>{comment.comment}</li>);

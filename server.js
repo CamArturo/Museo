@@ -13,11 +13,28 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+server = app.listen(app.get("port"), () => {
+  console.log(`Running on ${app.get("port")}.`);
+});
+
+io = socket(server);
+
+io.on("connection", (socket) => {
+  console.log("user connected", socket.id);
+
+  socket.on("SEND_COMMENT", (data) => {
+    io.emit("RECEIVE_MESSAGES", data);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("user has disconnected", socket.id);
+  });
+});
+
 app.get("/", (request, response) => {
   response.send("hello");
 });
 
-// get all collections
 app.get("/api/v1/collections", (request, response) => {
   database("collection").select()
     .then((collection) => {
@@ -28,7 +45,6 @@ app.get("/api/v1/collections", (request, response) => {
     });
 });
 
-// get specific collection
 app.get("/api/v1/collections/:category", (request, response) => {
   const {category} = request.params;
 
@@ -163,22 +179,4 @@ app.delete("/api/v1/users/:id", (request, response) => {
     .catch((error) => {
       response.status(500).json({error});
     });
-});
-
-server = app.listen(app.get("port"), () => {
-  console.log(`Running on ${app.get("port")}.`);
-});
-
-io = socket(server);
-
-io.on("connection", (socket) => {
-  console.log("user connected", socket.id);
-
-  socket.on("SEND_COMMENT", (data) => {
-    io.emit("RECEIVE_MESSAGES", data);
-  });
-
-  socket.on("disconnect", () => {
-    console.log("user has disconnected", socket.id);
-  });
 });
