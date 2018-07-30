@@ -12,14 +12,3 @@ export const collectionsHasErrored = (error) => ({
   type: 'COLLECTIONS_HAS_ERRORED',
   error
 });
-
-export const getComments =(comments) => ({
-  type: 'GET_COMMENTS',
-  comments
-});
-
-export const postComment = (comment) => ({
-  type: 'POST_COMMENT',
-  comment
-});
-

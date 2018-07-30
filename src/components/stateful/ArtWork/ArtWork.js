@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import io from "socket.io-client";
-import { connect } from "react-redux";
-import { Route } from "react-router";
-import { getComments, postComment } from "../../../actions/actions";
 import { fetchComments, sendCommentToDB } from "../../../api/api";
 import "normalize.css";
 import "./Artwork.css";
@@ -22,47 +19,38 @@ export class ArtWork extends Component {
     this.socket = io(window.location.hostname);
 
     this.socket.on("RECEIVE_MESSAGES", (data) => {
-      this.setState({ messages: [data, ...this.state.messages]})
+      this.setState({messages: [...this.state.messages, data]})
     });
-
-    this.sendComment = (event) => {
-      this.socket.emit("SEND_COMMENT", {
-        username: this.state.username,
-        comment: this.state.comment
-      });
-    };
   }
 
   async componentDidMount () {
-    const messages = await fetchComments();
-
-    this.setState({ messages });
+    const comments = await fetchComments();
+    this.setState({messages: comments})
   }
 
+  sendComment = () => {
+    this.socket.emit("SEND_COMMENT", {
+      username: this.state.username,
+      comment: this.state.comment,
+      artwork_id: this.props.artwork.id
+    });
+  };
+
   handleChange () {
-    this.sendComment(); //to socket
+    this.sendComment(); //send comment to socket
     sendCommentToDB(this.state.comment, this.props.artwork.id);
     this.setState({comment: ""});
   }
 
   displayArtwork = () => {
-    const filteredComments = this.state.messages.filter((comment) => {
+    let filteredComments = this.state.messages.filter((comment) => {
       return comment.artwork_id === this.props.artwork.id
     });
+    filteredComments = filteredComments.reverse();
     const allComments = filteredComments.map((comment, index) => <li key={`key${index}`}>{comment.comment}</li>);
 
     // artwork:
-    //   category
-    //     :
-    //     "asian"
-    //   id
-    //     :
-    //     487
-    //   image_link
-    //     :
-    //   page_link
-    //     :
-    //     "https://denverartmuseum.org/object/1967.18"
+    //   page_link : "https://denverartmuseum.org/object/1967.18"
     const endpoint = this.props.match.params.category;
     const category = endpoint.replace(/_/g, ' ');
 
@@ -95,11 +83,9 @@ export class ArtWork extends Component {
   };
 
   render () {
-
     return (
       <section className="artwork-page-container">
         {
-          // Object.keys(this.props.artwork).length > 0 ?
           this.displayArtwork()
         }
       </section>
@@ -107,13 +93,4 @@ export class ArtWork extends Component {
   }
 }
 
-export const mapStateToProps = (state) => ({
-  comments: state.comments
-});
-
-export const mapDispatchToProps = (dispatch) => ({
-  getComments: comments => dispatch(getComments(comments)),
-  postComment: comment => dispatch(postComment(comment))
-});
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ArtWork));
+export default withRouter(ArtWork);
