@@ -45,7 +45,11 @@ export class ArtWork extends Component {
   }
 
   displayArtwork = () => {
-    const allComments = this.props.comments.map((comment, index) => <li key={`key${index}`}>{comment.comment}</li>);
+    console.log(this.props.comments)
+    const filteredComments = this.props.comments.filter((comment) => {
+      return comment.artwork_id === this.props.artwork.id
+    });
+    const allComments = filteredComments.map((comment, index) => <li key={`key${index}`}>{comment.comment}</li>);
 
     // artwork:
     //   category

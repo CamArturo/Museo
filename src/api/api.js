@@ -27,7 +27,7 @@ export const sendCommentToDB = (comment, artwork_id) => {
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({
       author_id: "1",
-      artwork_id: artwork_id,
+      artwork_id,
       comment
     })
   };
