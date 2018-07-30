@@ -21,13 +21,13 @@ export const fetchComments = () => {
     .catch(error => error.message);
 };
 
-export const sendCommentToDB = (comment) => {
+export const sendCommentToDB = (comment, artwork_id) => {
   const request = {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({
       author_id: "1",
-      artwork_id: "999",
+      artwork_id,
       comment
     })
   };

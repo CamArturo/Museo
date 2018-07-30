@@ -17,6 +17,24 @@ export class App extends Component {
     this.props.getCollections(collections);
   }
 
+  displayPages = () => {
+    return (
+      <Switch>
+        <Route path="/:category/:id" render={({match}) => {
+          const { id, category } = match.params;
+          const cleanCategory = category.replace(/_/g, ' ');
+          const artwork = this.props.collections[cleanCategory].find(art => {
+            return art.id === parseInt(id, 10);
+          });
+          return (
+            <ArtWork artwork={artwork}/>
+          )
+        }} />
+        <Route path="/:category" component={CollectionPage}/>
+      </Switch>
+    )
+  };
+
   render () {
     return (
       <div className="App">
@@ -26,19 +44,10 @@ export class App extends Component {
           </NavLink>
         </header>
         <Route exact path="/" component={Home}/>
-        <Switch>
-          <Route path="/:category/:id" render={({match}) => {
-            const { id, category } = match.params;
-            const cleanCategory = category.replace(/_/g, ' ');
-            const artwork = this.props.collections[cleanCategory].find(art => {
-              return art.id === parseInt(id);
-            });
-            return (
-              <ArtWork artwork={artwork}/>
-            )
-          }} />
-          <Route path="/:category" component={CollectionPage}/>
-        </Switch>
+        {
+          Object.keys(this.props.collections).length > 0 ?
+          this.displayPages() : console.log('props not loaded yet')
+        }
       </div>
     );
   }
