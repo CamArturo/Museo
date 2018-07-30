@@ -40,7 +40,7 @@ export class ArtWork extends Component {
 
   handleChange () {
     this.sendComment(); //to socket
-    sendCommentToDB(this.state.comment);
+    sendCommentToDB(this.state.comment, this.props.artwork.id);
     this.setState({comment: ""});
   }
 
