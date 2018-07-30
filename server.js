@@ -9,7 +9,7 @@ const database = require("knex")(configuration);
 
 app.set("port", process.env.PORT || 4000);
 
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -32,7 +32,7 @@ io.on("connection", (socket) => {
 });
 
 app.get("/", (request, response) => {
-  response.send("hello");
+  respons.sendFile(__dirname + '/public');
 });
 
 app.get("/api/v1/collections", (request, response) => {
