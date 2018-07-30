@@ -45,7 +45,6 @@ export class ArtWork extends Component {
   }
 
   displayArtwork = () => {
-    console.log(this.props.comments)
     const filteredComments = this.props.comments.filter((comment) => {
       return comment.artwork_id === this.props.artwork.id
     });
