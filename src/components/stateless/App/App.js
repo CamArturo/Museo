@@ -24,7 +24,7 @@ export class App extends Component {
           const { id, category } = match.params;
           const cleanCategory = category.replace(/_/g, ' ');
           const artwork = this.props.collections[cleanCategory].find(art => {
-            return art.id === parseInt(id);
+            return art.id === parseInt(id, 10);
           });
           return (
             <ArtWork artwork={artwork}/>
