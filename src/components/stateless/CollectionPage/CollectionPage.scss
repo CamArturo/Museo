@@ -20,6 +20,7 @@
     padding: 0;
     background-color: #fff;
     .artwork-item {
+      //min-height: 275px;
       .artwork-top {
         position: relative;
         font-family: $font;
@@ -28,7 +29,8 @@
         font-variant: small-caps;
         font-size: 1.2rem;
         line-height: 1.5;
-        .art-museum-link {
+        min-height: 267px;
+          .art-museum-link {
           position: absolute;
           color: #fff;
           text-decoration: none;
@@ -45,6 +47,7 @@
           bottom: 2rem;
           width: 100%;
           margin: 0;
+          max-height: 193px;
           .artwork-artist {
             margin: .5rem 0 0 1rem;
             font-size: 1.2rem;
@@ -61,6 +64,8 @@
             font-variant: initial;
             text-transform: capitalize;
             width: 80%;
+            max-height: 72px;
+            overflow: hidden;
           }
           p {
             margin: 0 0 0 1rem;
@@ -97,3 +102,10 @@
     }
   }
 }
+//
+//@media only screen and (max-width: 375px) {
+//  .collection-page-container ul .artwork-item .artwork-top {
+//    font-size: 1rem;
+//    line-height: 1.2rem;
+//  }
+//}
