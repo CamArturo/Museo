@@ -11,7 +11,8 @@
     "socket.io": "^2.1.1"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "devDependencies": {
     "eslint": "^5.1.0"
