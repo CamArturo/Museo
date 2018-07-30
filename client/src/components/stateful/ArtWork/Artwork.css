@@ -1,0 +1,92 @@
+.artwork-piece-container button {
+  color: #fff;
+  background-color: #E8563C;
+  border-radius: 3px;
+  padding: 10px;
+  border: 0;
+  margin: 0 0 0 5%; }
+
+.artwork-piece-container .artwork-piece {
+  position: relative; }
+  .artwork-piece-container .artwork-piece .artwork-piece-img {
+    z-index: 1; }
+  .artwork-piece-container .artwork-piece .back-btn {
+    position: absolute;
+    top: 1rem;
+    width: 36px;
+    height: 36px;
+    margin: 0 0 0 1.5rem;
+    z-index: 2; }
+    .artwork-piece-container .artwork-piece .back-btn:hover {
+      cursor: pointer; }
+  .artwork-piece-container .artwork-piece .artwork-info {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    bottom: 2rem;
+    font-family: "Raleway", sans-serif;
+    text-align: left;
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 1.2rem;
+    line-height: 1.5; }
+    .artwork-piece-container .artwork-piece .artwork-info .artwork-artist {
+      margin: .5rem 0 0 1rem;
+      font-size: 1.2rem;
+      font-variant: normal; }
+    .artwork-piece-container .artwork-piece .artwork-info .artwork-artist-tag {
+      border-bottom: 2px solid #fff;
+      margin: 0 0 .5rem 1rem;
+      text-shadow: 1px 1px 1px #969696; }
+    .artwork-piece-container .artwork-piece .artwork-info .artwork-title {
+      font-size: 1.5rem;
+      font-family: 'Open Sans', sans-serif;
+      font-variant: initial;
+      text-transform: capitalize;
+      width: 80%; }
+    .artwork-piece-container .artwork-piece .artwork-info p {
+      margin: 0 0 0 1rem;
+      word-wrap: break-word;
+      width: calc(100% - 2rem);
+      text-shadow: 1px 1px 2px #969696; }
+  .artwork-piece-container .artwork-piece img {
+    width: 100%; }
+.artwork-piece-container textarea {
+  width: 90%;
+  margin: 50px auto 1rem;
+  display: block;
+  height: 120px;
+  border: 3px solid #ccc;
+  padding: 5px;
+  color: #fff;
+  background: none;
+  letter-spacing: 1px; }
+  .artwork-piece-container textarea:focus {
+    background-color: transparent;
+    outline: none; }
+.artwork-piece-container button {
+  text-transform: uppercase; }
+.artwork-piece-container .artwork-comments-container {
+  margin: 2rem auto;
+  padding: 0;
+  width: 90%;
+  border-radius: 5px;
+  position: relative; }
+  .artwork-piece-container .artwork-comments-container h3 {
+    margin: 0 0 2rem 2rem; }
+  .artwork-piece-container .artwork-comments-container li {
+    list-style: none;
+    margin: 1rem auto;
+    width: 90%;
+    padding: 6px 10px 7px;
+    border-radius: 10px 10px 10px 0;
+    background: rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
+    line-height: 1.4;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); }
+    .artwork-piece-container .artwork-comments-container li:nth-child(odd) {
+      border-radius: 1rem 3px 1rem 1rem; }
+    .artwork-piece-container .artwork-comments-container li:nth-child(even) {
+      border-radius: 1rem 1rem 1rem 3px; }
+
+/*# sourceMappingURL=Artwork.css.map */

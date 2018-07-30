@@ -1,0 +1,115 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif; }
+
+html,
+body {
+  background-color: #86828c;
+  font-family: "Raleway", sans-serif; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif; }
+
+input[type=text],
+input[type=password] {
+  width: 100%;
+  padding: 12px 0 12px 60px;
+  margin: 8px 0;
+  display: inline-block;
+  background-color: transparent;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  font-size: 12px;
+  color: #fff;
+  outline: none; }
+
+::placeholder {
+  color: #fff; }
+
+.App {
+  text-align: left;
+  color: #fff;
+  max-width: 768px;
+  margin: 0 auto 100px;
+  display: block;
+  position: relative; }
+
+header {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  border-bottom: 1px solid #f2f2f2; }
+  header a {
+    text-decoration: none; }
+    header a h1 {
+      margin: 0;
+      font-size: 24px;
+      padding: 0 0 0 30px;
+      color: #fff; }
+
+.cta {
+  padding: 0 40px 0 40px;
+  margin: 30px 0; }
+
+.login {
+  padding: 12px 40px; }
+  .login input[type=text] {
+    background: url("../../../assets/icon-users-64.png") no-repeat scroll left center;
+    background-size: 33px; }
+  .login input[type=password] {
+    background: url("../../../assets/icon-lock-64-left-8px.png") no-repeat scroll left center;
+    background-size: 22px; }
+  .login button {
+    color: #fff;
+    background-color: #E8563C;
+    height: 47px;
+    width: 100%;
+    border-radius: 40px;
+    border: 0;
+    margin-top: 38px; }
+
+.search-collections {
+  padding: 0 40px;
+  text-align: center;
+  margin-top: 50px; }
+  .search-collections input[type=text] {
+    text-align: center;
+    padding: 12px 0 12px 0; }
+
+.art-museum img {
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  margin-top: 50px; }
+
+.info-box {
+  padding: 0 40px;
+  margin-top: 50px; }
+  .info-box img {
+    float: left;
+    width: 43px;
+    height: 43px;
+    margin: 0 1rem 1rem 0;
+    font-size: 22px; }
+  .info-box p {
+    line-height: 1.5; }
+
+/*# sourceMappingURL=App.css.map */
