@@ -51,6 +51,7 @@
       text-shadow: 1px 1px 2px #969696; }
   .artwork-piece-container .artwork-piece img {
     width: 100%; }
+
 .artwork-piece-container textarea {
   width: 90%;
   margin: 50px auto 1rem;
@@ -64,8 +65,10 @@
   .artwork-piece-container textarea:focus {
     background-color: transparent;
     outline: none; }
+
 .artwork-piece-container button {
   text-transform: uppercase; }
+
 .artwork-piece-container .artwork-comments-container {
   margin: 2rem auto;
   padding: 0;
@@ -88,5 +91,3 @@
       border-radius: 1rem 3px 1rem 1rem; }
     .artwork-piece-container .artwork-comments-container li:nth-child(even) {
       border-radius: 1rem 1rem 1rem 3px; }
-
-/*# sourceMappingURL=Artwork.css.map */
