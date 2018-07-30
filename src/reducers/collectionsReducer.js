@@ -3,7 +3,7 @@ const initialState = {};
 const collectionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_COLLECTIONS":
-      return {...action.collections};
+      return {...state, ...action.collections};
     case "COLLECTIONS_IS_LOADING":
       return {...state, collectionsIsLoading: action.bool};
     case "COLLECTIONS_HAS_ERRORED":
