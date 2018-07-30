@@ -6,7 +6,8 @@ import { getComments, postComment } from "../../../actions/actions";
 import { fetchComments, sendCommentToDB } from "../../../api/api";
 import "normalize.css";
 import "./Artwork.css";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import backBtnImage from "../../../assets/arrow-61-48.png"
 
 export class ArtWork extends Component {
   constructor (props) {
@@ -58,12 +59,16 @@ export class ArtWork extends Component {
     //   page_link
     //     :
     //     "https://denverartmuseum.org/object/1967.18"
-
+    const endpoint = this.props.match.params.category;
+    const category = endpoint.replace(/_/g, ' ');
 
     return (
       <div className="artwork-piece-container">
         <section className="artwork-piece">
-          <img src={this.props.artwork.image_link} alt={this.props.artwork.title} />
+            <Link to={`/${category}/`}>
+              <img className="back-btn" src={backBtnImage} alt="" />
+            </Link>
+              <img className="artwork-piece-img" src={this.props.artwork.image_link} alt={this.props.artwork.title} />
           <section className="artwork-info">
             <span className="artwork-artist-tag">artist</span>
             <p className="artwork-artist">{this.props.artwork.artist}</p>
@@ -76,7 +81,6 @@ export class ArtWork extends Component {
                   wrap="hard" value={this.state.comment}
                   onChange={(event) => this.setState({comment: event.target.value})}
         />
-
         <button onClick={() => this.handleChange()}>Submit</button>
         <ul className="artwork-comments-container">
           <h3>Previous Comments</h3>

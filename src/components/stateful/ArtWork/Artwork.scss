@@ -3,11 +3,31 @@
 .artwork-piece-container {
   .artwork-piece {
     position: relative;
+    .artwork-piece-img {
+      z-index: 1;
+    }
+    .back-btn {
+      position: absolute;
+      top: 1rem;
+      width: 48px;
+      height: 48px;
+      margin: 0 0 0 1.5rem;
+      z-index: 2;
+      &:hover {
+        cursor: pointer;
+      }
+    }
     .artwork-info {
       position: absolute;
       width: 100%;
       margin: 0;
       bottom: 2rem;
+      font-family: "Raleway", sans-serif;
+      text-align: left;
+      font-weight: bold;
+      font-variant: small-caps;
+      font-size: 1.2rem;
+      line-height: 1.5;
       .artwork-artist {
         margin: .5rem 0 0 1rem;
         font-size: 1.2rem;
@@ -63,7 +83,7 @@
     border-radius: 5px;
     position: relative;
     h3 {
-      margin: 0 0 2rem 1rem;
+      margin: 0 0 2rem 2rem;
     }
     li {
       list-style: none;

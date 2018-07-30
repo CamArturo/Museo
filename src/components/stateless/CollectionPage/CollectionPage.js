@@ -14,7 +14,7 @@ export class CollectionPage extends Component {
       return (
         <li className="artwork-item" key={id}>
           <section className="artwork-top">
-            <a className="art-museum-link" href={page_link}>Back to Museum Page</a>
+            <a className="art-museum-link" href={page_link}>Link to Museum Page</a>
             <img src={image_link} alt={`${title}`} />
             <section className="artwork-info">
               <span className="artwork-artist-tag">artist</span>
