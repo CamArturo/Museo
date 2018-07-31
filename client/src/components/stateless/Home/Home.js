@@ -23,7 +23,7 @@ export class Home extends Component {
     const suggestions = trie.suggest(userInputSearch)
 
     if(suggestions.length) {
-      this.setsState({ suggestions })
+      this.setState({ suggestions })
     }
   }
 
