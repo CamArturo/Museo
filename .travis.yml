@@ -1,3 +1,9 @@
 language: node.js
 node_js:
   - "node"
+services:
+  - postgresql
+before_script:
+- psql -c 'CREATE DATABASE museo_talk;' -U postgres
+notifications:
+  email: false
