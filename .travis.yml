@@ -6,3 +6,9 @@ before_script:
 - psql -c 'CREATE DATABASE museo_talk;' -U postgres
 notifications:
   email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: S501zuyUCKPBY1ngmrvkdZoEZvjdLfd/rgQcyQIKsCAakf5hzOHexM/gZjrCqdi49UReXwr9n4+wGJbsfp7TS8bDff93RqXGLNHqucTVOcyncMls2eYb05VCBEh40c3NVA8DJBiia4EZMFHvxqySBNbwXb4CRRC6nJRj+vHJNmfAuBpCOnFAAWC+WEzBDI0Gr55Z+5PFNWcOaB9G+AQjGidIFGOq9IANwnTOXbdRgDqyvBEi8XJOALIUjtUHsVm13SPXiNMGY0GdGZP9Q9hImV/7Wgc1F77VRZ4iLXVGMCHXFpoWonWaLHDZqvl0piUZItgIftS/MCbMHSOVylU533nppVEk4AuD/ATOzpa/wLIwsQ7z8+e7asFi29SaeN6Tp06p8VkvR8bI4ueNdZBMU/PKx2YWu5LwcvB76Hgd3NXyFx2VY8gA0mlRk69PZ2wYRmsQum07W+eDYXvjV0/HeXZ83zf185UFcBHVJYjtRkMSInbRrPSD6q5r0xhL6Jg0srPhydTj2Dgqgq8IkXpRZCryNvOSMPkrcPgca3jIBMpPJ4V2gWihxck8jt/oRwvvywnX76lDyuC9c0a7XhwSboaLrYdxjdge8XvHhSJOcYuoZEq/noCHEAqNCC2nsDmYxybuiXBSULmqpTxxj1o53lXCJ/GdnDaXADJh4QDVO9Q=
+  app: museo-talk
+  skip_cleanup: true
