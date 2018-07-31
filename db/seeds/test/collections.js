@@ -7,7 +7,7 @@ const collection =
       "title": "Horse with Flowers Drinking Glass from the Table Stories Dinnerware",
       "year": "2005",
       "category": "architecture design and graphics",
-      "comments": [{author_id: 1, comment: "That's a glass!"},{author_id: 2, comment: "I'd drink from that."}]
+      "comments": [{ comment: "That's a glass!"},{ comment: "I'd drink from that."}]
     },
     {
       "artist": "India, southern",
@@ -16,7 +16,7 @@ const collection =
       "title": "Monkey God (Hanuman)",
       "year": "19th Century",
       "category": "asian",
-      "comments": [{author_id: 3, comment: "I dig it."}]
+      "comments": [{comment: "I dig it."}]
     }
   ];
 
