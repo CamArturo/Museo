@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import Collections from "../Collections/Collections";
 import "normalize.css";
 
@@ -37,8 +36,4 @@ export class Home extends Component {
   }
 }
 
-export const mapStateToProps = (state) => ({
-  comments: state.comments
-});
-
-export default connect(mapStateToProps, null)(Home);
+export default Home;

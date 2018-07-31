@@ -6,17 +6,17 @@ import CollectionPage from "../CollectionPage/CollectionPage";
 import "normalize.css";
 import "./Collections.css";
 
-const Collections = ({ collections }) => {
+export const Collections = ({collections}) => {
   const keys = Object.keys(collections);
 
-  const navLinks = keys.map(key => {
-    const endpoint = key.replace(/\s/g, '_');
+  const navLinks = keys.map((key, index) => {
+    const endpoint = key.replace(/\s/g, "_");
     return (
-      <li>
+      <li key={`${index} + ${key}`}>
         <img src={arrow} alt="" />
         <NavLink className="nav" to={`/${endpoint}`}>{key}</NavLink>
-        <Route 
-          path={`/${endpoint}`} 
+        <Route
+          path={`/${endpoint}`}
           component={CollectionPage}
         />
       </li>
@@ -27,7 +27,7 @@ const Collections = ({ collections }) => {
     <ul>
       {navLinks}
     </ul>
-    
+
   </section>;
 };
 
