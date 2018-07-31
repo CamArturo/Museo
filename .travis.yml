@@ -1,13 +1,8 @@
 language: node_js
-node_js: '9'
-services: postgresql
+node_js: 9.4.0
+services:
+- postgresql
 before_script:
 - psql -c 'CREATE DATABASE museo_talk;' -U postgres
 notifications:
   email: false
-deploy:
-  provider: heroku
-  api_key:
-    secure: eG/krbXbEdFhGX9Sp4mlcNqV6KubLpgAxpcFiUrsjfAPu1hVQ2ZKcrsbT3aYowtl45jQ5rS/5X549Xt9T3uAH/naK3gVFOVfDgxecbXV/Rl6gKKd1H6vxrRoZIZAW/ABXDDSofvliIwXoBGJU1BmZ3gi59dd1/HqoHo1hmVsrQM2sqj2K4eKuAFJdsKZEwrxH3wpJ0KqNWtLNjz8Jx/3gZ+WpcPl2ixTNGqrguHJUEmWKsNjQZ38tJxTPhzQM+FCrpHA4VMb3b8PHG9/Q5F6OAVsLGA3XPpianwErnuUrKP2bipUWVTYjYOcGfnGQACbVKwwvSQYLoBC3+hWFZrNyqpoL3+ElKu26EAyQSSqNxeCfVXz83XZ68whxlXMjIl4ix9LbO8+U2t/Df1R5KtFh+AVAXWMYbZnrBtwfx3f2Vmdqkpj1ym2Jccm5bYXlzTBsFJT0dcmLxdaVp271Nbkr/Ppchz0nlJfBjofGJ2f9i+Gx85eZroL/yzx45VR6vAu2h5W+BdxT1LKjZvK5a7PZE8NJ4IRqPE5w1v4w7jkPosC1oJHBQIuziiCM41C3Y2krSQsByOZeTRtSgEYJ7VoOIl3v8//qO5I/jc6hS5Ycf1ERTf60yY6Vz/jPjzGna8J6bDaD56wyu01z90rfnYTMJtt6COn/0VdYfKjdREx5gk=
-  app: museo-talk
-  skip_cleanup: true
