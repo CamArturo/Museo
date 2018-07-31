@@ -1,9 +1,33 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Collections from "../Collections/Collections";
+import Trie from "../../../autocomplete/Trie";
+import artTitles from "../../../autocomplete/art-titles";
 import "normalize.css";
 
+const trie = new Trie;
+trie.populate(artTitles);
+
 export class Home extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      userInputSearch: '',
+      suggestions: []
+    }
+  }
+
+  searchTitle(userInputSearch) {
+    this.setState({ userInputSearch });
+
+    const suggestions = trie.suggest(userInputSearch)
+
+    if(suggestions.length) {
+      this.setsState({ suggestions })
+    }
+  }
+
   render () {
     return (
       <div>
@@ -24,7 +48,17 @@ export class Home extends Component {
         </section>
         <section className="search-collections">
           <h2>Search Collections.</h2>
-          <input type="text" placeholder="Search for an art piece" name="search-collections" />
+          <input 
+            list="titles" 
+            value={this.state.userInputSearch}
+            onChange={(event) => this.searchTitle(event.target.value)}
+            type="text" 
+            placeholder="Search for an art piece" 
+            name="search-collections" 
+          />
+          <datalist id="titles">
+            {this.state.suggestions.map((title) => <option value={title} /> )}
+          </datalist>
         </section>
         <Collections />
         <section className="info-box">
