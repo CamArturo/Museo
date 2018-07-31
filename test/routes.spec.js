@@ -47,6 +47,32 @@ describe('API Routes', () => {
       });
   });
 
+  describe("should get all the collections", () => {
+    it("should return all the collections from the collection table ", done => {
+      chai.request(server)
+        .get('/api/v1/collections')
+        .end((err, response) => {
+          response.should.have.status(200);
+          response.should.be.json;
+          response.body.should.be.a("array");
+          response.body[0].should.be.a("object");
+          response.body[0].should.have.property("title");
+          response.body[0].title.should.be.a("string");
+          response.body[0].should.have.property("artist");
+          response.body[0].artist.should.be.a("string");
+          response.body[0].should.have.property("year");
+          response.body[0].year.should.be.a("string");
+          response.body[0].should.have.property("category");
+          response.body[0].category.should.be.a("string");
+          response.body[0].should.have.property("page_link");
+          response.body[0].page_link.should.be.a("string");
+          response.body[0].should.have.property("image_link");
+          response.body[0].image_link.should.be.a("string");
+          done();
+        })
+    });
+  });
+
   describe('GET /api/v1/comments', () => {
     it('should return all the comment entries in the post table', done => {
       chai.request(server)
