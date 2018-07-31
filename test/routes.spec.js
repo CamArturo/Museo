@@ -47,15 +47,54 @@ describe('API Routes', () => {
       });
   });
 
-  describe('GET /api/v1/collections', () => {
-    it('should return all the data in collections table', done => {
+  describe('GET /api/v1/comments', () => {
+    it('should return all the comment entries in the post table', done => {
       chai.request(server)
-        .get('/api/v1/collections')
+        .get('/api/v1/comments')
         .end((err, response) => {
           response.should.have.status(200);
           response.should.be.json;
+          response.body.should.be.a('array');
+          response.body[0].should.have.property('artwork_id');
+          response.body[0].artwork_id.should.equal(1);
+          response.body[0].should.have.property('comment');
+          response.body[0].comment.should.equal('That\'s a glass!')
           done();
         });
     })
+  });
+
+  describe('POST /api/v1/comments', () => {
+    it('should add comment to posts table and return message', done => {
+      chai.request(server)
+        .post('/api/v1/comments')
+        .send({
+          'artwork_id': 2,
+          'author_id': 1,
+          'comment': 'Beautiful!'
+        })
+        .end((err, response) => {
+          response.should.have.status(201);
+          response.should.be.json;
+          response.body.should.have.property('message');
+          response.body.message.should.equal('Comment was added to art with id: 2');
+          done();
+        });
+    });
+
+    it('should return error message with invalid request body', done => {
+      chai.request(server)
+        .post('/api/v1/comments')
+        .send({
+          'comment': 'Beautiful!'
+        })
+        .end((err, response) => {
+          response.should.have.status(422);
+          response.should.be.json;
+          response.body.should.have.property('error');
+          response.body.error.should.equal('Expected format {artwork_id: <Integer>,comment: <String>,author_id: <Integer>}. You\'re missing a "artwork_id" property.')
+          done();
+        });
+    });
   });
 });

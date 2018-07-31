@@ -43,7 +43,7 @@ app.post("/api/v1/comments", (request, response) => {
 
   for (let requiredParameter of ["artwork_id", "author_id", "comment"]) {
     if (!request.body[requiredParameter]) {
-      return response.status(422).send({
+      return response.status(422).json({
         error: `Expected format {artwork_id: <Integer>,comment: <String>,author_id: <Integer>}. You're missing a "${requiredParameter}" property.`
       });
     }
