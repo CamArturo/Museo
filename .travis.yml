@@ -1,6 +1,5 @@
 language: node.js
-node_js:
-- node
+node_js: 9.4.0
 services:
 - postgresql
 before_script:
