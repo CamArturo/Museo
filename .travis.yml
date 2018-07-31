@@ -1,5 +1,5 @@
 language: node_js
-node_js: 9.4.0
+node_js: '9'
 services: postgresql
 before_script:
 - psql -c 'CREATE DATABASE museo_talk;' -U postgres
