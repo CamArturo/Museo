@@ -1,6 +1,6 @@
-import { fetchCollections, fetchComments, sendCommentToDB } from './api';
+import { fetchCollections, fetchComments, sendCommentToDB } from "./api";
 
-describe('fetchCollections', () => {
+describe("fetchCollections", () => {
   let mockResults;
 
   beforeEach(() => {
@@ -23,53 +23,55 @@ describe('fetchCollections', () => {
       }
     ];
 
-    window.fetch = jest.fn().mockImplementation(()=> Promise.resolve({
-        status: 200,
-        json: () => Promise.resolve(mockResults)
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      status: 200,
+      json: () => Promise.resolve(mockResults)
     }));
   });
 
-  it('should call fetch with the correct params', () => {
-    const expected = '/api/v1/collections';
+  it("should call fetch with the correct params", () => {
+    const expected = "/api/v1/collections";
 
     fetchCollections();
 
     expect(window.fetch).toHaveBeenCalledWith(expected);
   });
 
-  it('should return the array data as an object with categories as keys, if status code is ok', async () => {
-    const expected =  {
-      "architecture design and graphics": 
+  it("should return the array data as an object with categories as keys, if status code is ok", async () => {
+    const expected = {
+      "architecture design and graphics":
         [{
-          "artist": "Tord Boontje", 
-          "category": "architecture design and graphics", 
+          "artist": "Tord Boontje",
+          "category": "architecture design and graphics",
           "image_link": "https://s3.amazonaws.com/damcollections/68bd2286_8890/2000/2000_medium.jpg",
-          "page_link": "https://denverartmuseum.org/object/2006.218", 
-          "title": "Horse with Flowers Drinking Glass from the Table Stories Dinnerware", 
-          "year": "2005"}], 
-      "asian": 
+          "page_link": "https://denverartmuseum.org/object/2006.218",
+          "title": "Horse with Flowers Drinking Glass from the Table Stories Dinnerware",
+          "year": "2005"
+        }],
+      "asian":
         [{
-          "artist": "India, southern", 
-          "category": "asian", 
-          "image_link": "https://s3.amazonaws.com/damcollections/85422afb_509/2000/2000_medium.jpg", 
-          "page_link": "https://denverartmuseum.org/object/1991.1012", 
-          "title": "Monkey God (Hanuman)", 
-          "year": "19th Century"}]
-    }
+          "artist": "India, southern",
+          "category": "asian",
+          "image_link": "https://s3.amazonaws.com/damcollections/85422afb_509/2000/2000_medium.jpg",
+          "page_link": "https://denverartmuseum.org/object/1991.1012",
+          "title": "Monkey God (Hanuman)",
+          "year": "19th Century"
+        }]
+    };
 
-    await expect(fetchCollections()).resolves.toEqual(expected)
+    await expect(fetchCollections()).resolves.toEqual(expected);
   });
 
-  it('should throw an error if the status code is not ok', async () => {
-    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({status:500}));
+  it("should throw an error if the status code is not ok", async () => {
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({status: 500}));
 
-    const expected = 'results.json is not a function';
+    const expected = "results.json is not a function";
 
     await expect(fetchCollections()).resolves.toEqual(expected);
   });
 });
 
-describe('fetchComments', () => {
+describe("fetchComments", () => {
   let mockResults;
 
   beforeEach(() => {
@@ -87,68 +89,79 @@ describe('fetchComments', () => {
     ];
 
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-        status: 200,
-        json: () => Promise.resolve(mockResults)
+      status: 200,
+      json: () => Promise.resolve(mockResults)
     }));
   });
 
-  it('should call fetch with the correct params', () => {
-    const expected = '/api/v1/comments';
+  it("should throw an error if the status code is not ok", async () => {
+
+    window.fetch = jest.fn().mockImplementationOnce(() => Promise.reject(
+      new Error('results.json is not a function')
+    ));
+
+    const expected = "results.json is not a function";
+
+    await expect(fetchComments()).resolves.toEqual(expected);
+  });
+
+  it("should call fetch with the correct params", () => {
+    const expected = "/api/v1/comments";
 
     fetchComments();
 
     expect(window.fetch).toHaveBeenCalledWith(expected);
   });
 
-  it('should return the array of comment objects if status is ok', async () => {
+  it("should return the array of comment objects if status is ok", async () => {
     const expected = mockResults;
 
     await expect(fetchComments()).resolves.toEqual(expected);
   });
 
-  it('should throw an error if the status is not ok', async () => {
+  it("should throw an error if the status is not ok", async () => {
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({status: 500}));
 
-    const expected = 'results.json is not a function';
+    const expected = "results.json is not a function";
 
     await expect(fetchCollections()).resolves.toEqual(expected);
   });
 });
 
-describe('sendCommentToDB', () => {
+describe("sendCommentToDB", () => {
   let mockComment;
 
   beforeEach(() => {
     mockComment = {
-      author_id: '1',
+      author_id: "1",
       artwork_id: 5,
-      comment: 'Ah!'
-    }
+      comment: "Ah!"
+    };
 
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       status: 201,
       json: () => Promise.resolve({
-         message: 'Comment was added to art with id: 5'
+        message: "Comment was added to art with id: 5"
       })
-    }))
+    }));
   });
 
-  it('should call fetch with the correct params', () => {
-    const expected = ['/api/v1/comments', {
-      method: 'POST',
-      headers: { "Content-Type": "application/json" },
+  it("should call fetch with the correct params", () => {
+    const expected = ["/api/v1/comments", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
       body: JSON.stringify(mockComment)
     }];
 
     sendCommentToDB("Ah!", 5);
 
-    expect(window.fetch).toHaveBeenCalledWith(...expected)
+    expect(window.fetch).toHaveBeenCalledWith(...expected);
   });
 
-  it('throws an error if status code is not ok', async () => {
+  it("throws an error if status code is not ok", async () => {
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({status: 500}));
 
-    const expected = 'results.json is not a function';
+    const expected = "results.json is not a function";
 
     await expect(sendCommentToDB("Ah!", 5)).resolves.toEqual(expected);
   });

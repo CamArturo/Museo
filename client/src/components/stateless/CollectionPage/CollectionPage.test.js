@@ -64,7 +64,7 @@ describe("CollectionPage", () => {
 
   it("should not call displayCollection if there are no collections", () => {
     const match = {params: {category: "asian"}};
-    
+
     wrapper = shallow(<CollectionPage
       collections={[]}
       match={match}
