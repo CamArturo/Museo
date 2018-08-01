@@ -50,8 +50,6 @@ export class ArtWork extends Component {
     filteredComments = filteredComments.reverse();
     const allComments = filteredComments.map((comment, index) => <li key={`key${index}`}>{comment.comment}</li>);
 
-    // artwork:
-    //   page_link : "https://denverartmuseum.org/object/1967.18"
     const endpoint = this.props.match.params.category;
     const category = endpoint.replace(/_/g, ' ');
 
@@ -74,7 +72,7 @@ export class ArtWork extends Component {
                   wrap="hard" value={this.state.comment}
                   onChange={(event) => this.setState({comment: event.target.value})}
         />
-        <button onClick={() => this.handleChange()}>Submit</button>
+        <button className="handle-change-btn" onClick={() => this.handleChange()}>Submit</button>
         <ul className="artwork-comments-container">
           <h3>Previous Comments</h3>
           {allComments}
