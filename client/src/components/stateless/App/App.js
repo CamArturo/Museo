@@ -46,7 +46,7 @@ export class App extends Component {
         <Route exact path="/" component={Home}/>
         {
           Object.keys(this.props.collections).length > 0 ?
-          this.displayPages() : console.log('props not loaded yet')
+          this.displayPages() : ''
         }
       </div>
     );

@@ -34,6 +34,6 @@ export const sendCommentToDB = (comment, artwork_id) => {
 
   return fetch("/api/v1/comments", request)
     .then(results => results.json())
-    .then(data => console.log(data))
+    // .then(data => console.log(data))
     .catch(error => error.message);
 };

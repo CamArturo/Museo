@@ -7,7 +7,7 @@ export class CollectionPage extends Component {
 
   displayCollection = () => {
     const endpoint = this.props.match.params.category;
-    const category = endpoint.replace(/_/g, ' ');
+    const category = endpoint.replace(/_/g, " ");
 
     const artworks = this.props.collections[category].map(art => {
       const {id, artist, title, year, image_link, page_link} = art;
@@ -46,7 +46,7 @@ export class CollectionPage extends Component {
       <div>
         {
           Object.keys(this.props.collections).length > 0 ?
-          this.displayCollection() : console.log("no collection available")
+            this.displayCollection() : ""
         }
       </div>
     );

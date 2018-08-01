@@ -8,22 +8,22 @@ const trie = new Trie();
 trie.populate(artTitles);
 
 export class Home extends Component {
-  constructor(props) {
-    super(props)
+  constructor (props) {
+    super(props);
 
     this.state = {
-      userInputSearch: '',
+      userInputSearch: "",
       suggestions: []
-    }
+    };
   }
 
-  searchTitle(userInputSearch) {
-    this.setState({ userInputSearch });
+  searchTitle (userInputSearch) {
+    this.setState({userInputSearch});
 
-    const suggestions = trie.suggest(userInputSearch)
+    const suggestions = trie.suggest(userInputSearch);
 
-    if(suggestions.length) {
-      this.setState({ suggestions })
+    if (suggestions.length) {
+      this.setState({suggestions});
     }
   }
 
@@ -47,16 +47,17 @@ export class Home extends Component {
         </section>
         <section className="search-collections">
           <h2>Search Collections.</h2>
-          <input 
-            list="titles" 
+          <input
+            className="search-titles-input"
+            list="titles"
             value={this.state.userInputSearch}
             onChange={(event) => this.searchTitle(event.target.value)}
-            type="text" 
-            placeholder="Search for an art piece" 
-            name="search-collections" 
+            type="text"
+            placeholder="Search for an art piece"
+            name="search-collections"
           />
           <datalist id="titles">
-            {this.state.suggestions.map((title) => <option value={title} /> )}
+            {this.state.suggestions.map((title, index) => <option key={`option - ${index}`} value={title} />)}
           </datalist>
         </section>
         <Collections />

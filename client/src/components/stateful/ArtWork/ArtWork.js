@@ -16,7 +16,9 @@ export class ArtWork extends Component {
       messages: []
     };
 
+    // For production
     this.socket = io(window.location.hostname);
+    // for local development
     // this.socket = io("localhost:4000");
     
     this.socket.on("RECEIVE_MESSAGES", (data) => {
