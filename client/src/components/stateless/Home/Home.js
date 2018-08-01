@@ -4,7 +4,7 @@ import Trie from "../../../autocomplete/Trie";
 import artTitles from "../../../autocomplete/art-titles";
 import "normalize.css";
 
-const trie = new Trie;
+const trie = new Trie();
 trie.populate(artTitles);
 
 export class Home extends Component {

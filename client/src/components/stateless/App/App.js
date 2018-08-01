@@ -27,7 +27,7 @@ export class App extends Component {
             return art.id === parseInt(id, 10);
           });
           return (
-            <ArtWork artwork={artwork}/>
+            <ArtWork artwork={artwork} category={cleanCategory}/>
           )
         }} />
         <Route path="/:category" component={CollectionPage}/>
@@ -53,11 +53,11 @@ export class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   collections: state.collections
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   getCollections: collections => dispatch(getCollections(collections))
 });
 
