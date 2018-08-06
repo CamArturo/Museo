@@ -4,7 +4,9 @@
 Engage with other visitors via chat and comments while browsing your favorite art pieces
 
 ## Technologies
-React, Redux, Node/Express, Knex, Socket.io, Jest, Enzyme, Mocha, Chai, Nightmare
+React - Redux - Jest - Enzyme  
+Node/Express - Knex - Socket.io - Mocha - Chai   
+Nightmare
 
 ## Tools
 [Denver Art Museum web page](https://denverartmuseum.org/collection/), GitHub Projects   
