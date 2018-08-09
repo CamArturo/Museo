@@ -51,6 +51,7 @@ class Trie {
   }
 
   suggest(prefix) {
+    if(prefix.length >= 3) {
     prefix = prefix.toLowerCase();
     let currNode = this.root.children;
 
@@ -64,6 +65,9 @@ class Trie {
     let suggestedWords = this.buildWords(currNode);
     let sortedArray = suggestedWords.sort((a,b) => b[1] - a[1]);
     return sortedArray.map(word => word[0]);
+    } else {
+      return [prefix]
+    }
   }      
 
   buildWords(currNode, suggestedWords = []) { 
