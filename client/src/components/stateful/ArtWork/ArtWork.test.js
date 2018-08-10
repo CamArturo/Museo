@@ -11,7 +11,7 @@ describe("ArtWork", () => {
   let mockComments;
 
   beforeEach(() => {
-    mockCategory = 'asian';
+    mockCategory = "asian";
     mockArtwork = {
       artist: "China",
       category: "asian",
@@ -22,41 +22,45 @@ describe("ArtWork", () => {
       year: "n.d."
     };
     mockComments = [
-      {artwork_id: 504, author_id: 2, comment: 'hello'}, 
-      {artwork_id: 3, author_id: 4, comment: 'goodbye'}
-    ]
+      {artwork_id: 504, author_id: 2, comment: "hello"},
+      {artwork_id: 3, author_id: 4, comment: "goodbye"}
+    ];
 
-    wrapperMount = mount(
-      <MemoryRouter initialEntries={[ '/asian/502' ]}>
-        <ArtWork artwork={mockArtwork} category={mockCategory}/>
-      </MemoryRouter>
-    );
+    // wrapperMount = mount(
+    //   // initialEntries feeds a location
+    //   <MemoryRouter initialEntries={["/asian/502"]}>
+    //     <ArtWork artwork={mockArtwork} category={mockCategory} />
+    //   </MemoryRouter>
+    // );
 
     wrapperShallow = shallow(
-      <MemoryRouter initialEntries={[ '/asian/502' ]}>
-        <ArtWork artwork={mockArtwork} category={mockCategory}/>
-      </MemoryRouter>
+      <ArtWork
+        artwork={mockArtwork}
+        category={mockCategory}
+      />, { disableLifecycleMethods: true }
     );
   });
 
-  it.skip(' componentDidMount', async ()=> {
+  it.skip(" componentDidMount", async () => {
+    wrapperShallow.setState({messages: ""});
+
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({json: () => Promise.resolve(mockComments)}));
 
     await wrapperShallow.instance().componentDidMount();
 
-    expect(wrapperShallow.state('messages')).toBe(mockComments);
+    expect(wrapperShallow.state("messages")).toBe(mockComments);
   });
 
-  it.skip('should call handleFavorite when Add to favorites button is clicked', () => {
-    const spy = spyOn(wrapperMount.instance(), 'handleChange');
+  it.skip("should call handleFavorite when Add to favorites button is clicked", () => {
+    const spy = spyOn(wrapperMount.instance(), "handleChange");
 
     wrapperMount.instance().forceUpdate();
-    wrapperMount.find('button').simulate('click');
+    wrapperMount.find("button").simulate("click");
 
     expect(spy).toHaveBeenCalled();
   });
 
-  it.skip('should render all the elements', () => {
-    expect(wrapperShallow.find('.artwork-page-container').length).toBe(1);
-  })
+  it("should render all the elements", () => {
+    expect(wrapperShallow.find(".artwork-page-container").length).toEqual(1);
+  });
 });
