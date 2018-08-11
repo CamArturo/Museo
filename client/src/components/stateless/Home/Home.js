@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Collections from "../Collections/Collections";
 import Trie from "../../../autocomplete/Trie";
 import artTitles from "../../../autocomplete/art-titles";
@@ -25,6 +26,26 @@ export class Home extends Component {
     if (suggestions.length) {
       this.setState({suggestions});
     }
+  }
+
+  findSelectedArtWork = () => {
+    const keys = Object.keys(this.props.collections)
+    let selectedArtWork = null;
+    let count = 0
+
+    while (!selectedArtWork) {
+      selectedArtWork = this.props.collections[keys[count]].find(art => {
+        return art.title.toLowerCase() === this.state.userInputSearch
+      });
+      count++
+    }
+    
+    this.redirectToArtWorkPage(selectedArtWork.category, selectedArtWork.id)
+  }
+
+  redirectToArtWorkPage = (category, id) => {
+    category = category.replace(/\s/g, '_')
+    this.props.history.push(`/${category}/${id}`)
   }
 
   render () {
@@ -59,6 +80,9 @@ export class Home extends Component {
           <datalist id="titles">
             {this.state.suggestions.map((title, index) => <option key={`option - ${index}`} value={title} />)}
           </datalist>
+          <button onClick={this.findSelectedArtWork}>
+            Go To Selection
+          </button>
         </section>
         <Collections />
         <section className="info-box">
@@ -71,4 +95,8 @@ export class Home extends Component {
   }
 }
 
-export default Home;
+export const mapStateToProps = (state) => ({
+  collections: state.collections
+})
+
+export default connect(mapStateToProps)(Home);
