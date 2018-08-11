@@ -93,6 +93,14 @@ header {
   .search-collections input[type=text] {
     text-align: center;
     padding: 12px 0 12px 0; }
+  .search-collections button {
+    color: #fff;
+    background-color: #E8563C;
+    height: 47px;
+    width: 100%;
+    border-radius: 40px;
+    border: 0;
+    margin-top: 38px; }
 
 .art-museum img {
   max-height: 100%;
