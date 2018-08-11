@@ -25,7 +25,7 @@ describe("Home", () => {
   it("should have search-collections element", () => {
     expect(wrapper.find(".search-collections").length).toEqual(1);
   });
-  it("typing in .search-titles-input should update state", () => {
+  it.skip("typing in .search-titles-input should update state", () => {
     const expected = "Face Maze";
     const mockEvent = {target: {value: "Face Maze"}};
     wrapper.find(".search-titles-input").simulate("change", mockEvent);

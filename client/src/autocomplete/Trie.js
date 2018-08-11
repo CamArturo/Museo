@@ -51,20 +51,24 @@ class Trie {
   }
 
   suggest(prefix) {
-    prefix = prefix.toLowerCase();
-    let currNode = this.root.children;
+    if(prefix.length >= 3) {
+      prefix = prefix.toLowerCase();
+      let currNode = this.root.children;
 
-    for(let i = 0; i < prefix.length; i++) {
-      if(!currNode[prefix[i]]) {
-        return currNode;
+      for(let i = 0; i < prefix.length; i++) {
+        if(!currNode[prefix[i]]) {
+          return currNode;
+        }
+        currNode = currNode[prefix[i]].children;
       }
-      currNode = currNode[prefix[i]].children;
-    }
 
-    let suggestedWords = this.buildWords(currNode);
-    let sortedArray = suggestedWords.sort((a,b) => b[1] - a[1]);
-    return sortedArray.map(word => word[0]);
-  }      
+      let suggestedWords = this.buildWords(currNode);
+      let sortedArray = suggestedWords.sort((a,b) => b[1] - a[1]);
+      return sortedArray.map(word => word[0]);
+    } else {
+      return [prefix]
+    }
+  }
 
   buildWords(currNode, suggestedWords = []) { 
     let keys = Object.keys(currNode);
