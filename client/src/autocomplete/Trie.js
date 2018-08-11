@@ -52,16 +52,26 @@ class Trie {
 
   suggest(prefix) {
     if(prefix.length >= 3) {
+<<<<<<< HEAD
     prefix = prefix.toLowerCase();
     let currNode = this.root.children;
 
     for(let i = 0; i < prefix.length; i++) {
       if(!currNode[prefix[i]]) {
         return currNode;
-      }
-      currNode = currNode[prefix[i]].children;
-    }
+=======
+      prefix = prefix.toLowerCase();
+      let currNode = this.root.children;
 
+      for(let i = 0; i < prefix.length; i++) {
+        if(!currNode[prefix[i]]) {
+          return currNode;
+        }
+        currNode = currNode[prefix[i]].children;
+>>>>>>> 02fe8d6a3360ec4f821ae477a769c1023d86e04c
+      }
+
+<<<<<<< HEAD
     let suggestedWords = this.buildWords(currNode);
     let sortedArray = suggestedWords.sort((a,b) => b[1] - a[1]);
     return sortedArray.map(word => word[0]);
@@ -69,6 +79,15 @@ class Trie {
       return [prefix]
     }
   }      
+=======
+      let suggestedWords = this.buildWords(currNode);
+      let sortedArray = suggestedWords.sort((a,b) => b[1] - a[1]);
+      return sortedArray.map(word => word[0]);
+    } else {
+      return [prefix]
+    }
+  }
+>>>>>>> 02fe8d6a3360ec4f821ae477a769c1023d86e04c
 
   buildWords(currNode, suggestedWords = []) { 
     let keys = Object.keys(currNode);
