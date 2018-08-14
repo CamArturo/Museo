@@ -80,7 +80,7 @@ export class Home extends Component {
           <datalist id="titles">
             {this.state.suggestions.map((title, index) => <option key={`option - ${index}`} value={title} />)}
           </datalist>
-          <button onClick={this.findSelectedArtWork}>
+          <button disabled={!this.state.userInputSearch} onClick={this.findSelectedArtWork}>
             Go To Selection
           </button>
         </section>
